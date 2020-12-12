@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ./utils/header.pug
+        title Log In
+    include ./utils/initial.pug
+    br
+    if error
+        .container.px-auto
+            .alert.alert-warning(role="alert")= error
+    .container.px-auto
+        .card(style="max-width:20rem;")
+            .card-body
+                h5.card-title Log in
+                form(action="/logIn" method="POST")
+                    .form-group.my-3
+                        label(for="usuario") Usuario
+                        input.form-control(id="usuario" name="user" autofocus)
+                    .form-group.my-3
+                        label(for="contraseña") Contraseña
+                        input.form-control(id="contraseña" type="password" name="psw")
+                    .form-group.my-3
+                        button.btn.btn-primary(type="submit") Entrar

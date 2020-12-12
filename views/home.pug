@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ./utils/header.pug
+        title Home
+    include ./utils/navigator.pug
+    br
+    .container.mx-auto
+        if error
+            .alert(class ="alert-"+type+"" role="alert")= error
+        a.btn.btn-danger.m-2(href="/newRegistry" style="background-color:#A24936;border-color:#A24936") Nuevo registro
+        include ./utils/list.pug
+    script(src="/public/js/target.js")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous")

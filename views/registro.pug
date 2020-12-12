@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ./utils/header.pug
+        title Register
+    include ./utils/navigator.pug
+    br
+    .container.px-auto
+        .row.justify-content-end
+            .col-4
+                if error
+                    .alert(class ="alert-"+type+"" role="alert")= error
+            .col
+                .card
+                    .card-body
+                        if pato
+                            h5.card-title Actualizacion del Patito
+                            form(action="/update"+pato[0].idDuck+"" method="POST")
+                                .form-group.my-3
+                                    label(for="nombre") Nombre del Patito
+                                    input.form-control(id="nombre" name="nombre" value=pato[0].idDuck)
+                                .form-group.my-3
+                                    label(for="color") Color del patito
+                                    select.form-control(id="color" name="color")
+                                        for val in colores
+                                            if pato[0].idDuckColors == val.idColors
+                                                option(value=val.idColors selected)= val.colorName
+                                            else
+                                                option(value=val.idColors)= val.colorName
+                                .form-group.my-3
+                                    label(for="color") Sombrero
+                                    select.form-control(id="color" name="hat")
+                                        for val in sombreros
+                                            if pato[0].idDuckHat == val.idHat
+                                                option(value=val.idHat selected)= val.idHat
+                                            else
+                                                option(value=val.idHat)= val.idHat
+                                hr
+                                .form-group.my-3
+                                    button.btn.btn-primary(type="submit") Actualizar
+                                    a.btn.btn-secondary.mx-3(href="/home") Volver
+                        else
+                            h5.card-title Registro de Patito
+                            form(action="/new" method="POST")
+                                .form-group.my-3
+                                    label(for="nombre") Nombre del Patito
+                                    input.form-control(id="nombre" name="nombre")
+                                .form-group.my-3
+                                    label(for="color") Color del patito
+                                    select.form-control(id="color" name="color")
+                                        for val in colores
+                                            option(value=val.idColors)= val.colorName
+                                .form-group.my-3
+                                    label(for="color") Sombrero
+                                    select.form-control(id="color" name="hat")
+                                        for val in sombreros
+                                            option(value=val.idHat)= val.idHat
+                                hr
+                                .form-group.my-3
+                                    button.btn.btn-primary(type="submit") Registrar
+                                    a.btn.btn-secondary.mx-3(href="/home") Volver
+                            

@@ -1,0 +1,35 @@
+if data != ""
+    table.table.table-dark.table-striped
+        caption Patitos guardados
+        thead(style="background-color: #282B28"): tr
+            th(scope="col") Nombre
+            th(scope="col") Color
+            th(scope="col") Sombrero
+            th(scope="col") Accion
+        tbody
+            each val,index in data
+                tr
+                    th(scope="row")
+                        a.btn.btn-dark(href="/info"+val.idDuck+"")= val.idDuck
+                    td #[span.badge.px-auto(style="width:5rem;background-color: #"+color[index].idColors+";color:#"+color[index].idColors+"")= " "]
+                        =" "+color[index].colorName
+                    td=val.idDuckHat
+                    td
+                        form(action="/change", method="post")
+                            input(type="hidden" value=val.idDuck name="id")
+                            button.btn.btn-danger.mx-1(type="button" data-bs-toggle="modal" data-bs-target="#msgPop" onclick="change('"+val.idDuck+"')") Eliminar
+                            button.btn.btn-warning.mx-1(type="submit") Modificar
+        .modal.fade(id="msgPop" tabindex="-1" aria-labelledby="topTitle" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header(style="color: black")
+                        h5.modal-title(id="topTitle") Advertencia
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body(style="color: black") ¿Esta seguro de eliminar este patito?<br/> Una vez eliminado ya no se podra recuperar
+                    .modal-footer
+                        button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancelar
+                        form#popup(action="/delete" method="get")
+                            button.btn.btn-danger(type="submit") Eliminar
+
+else
+    .alert.alert-info(role="alert") No se encontraron regitros

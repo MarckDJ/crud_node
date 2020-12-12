@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ./utils/header.pug
+        title Register
+    include ./utils/navigator.pug
+    br
+    .container.px-auto
+        .row.justify-content-end
+            .col-4
+            .col
+                .card
+                    .card-body
+                        h5.card-title Informacion del Patito
+                        hr
+                        h6.card-text Nombre del Patito
+                        p.card-text= pato[1].idDuck
+                        h6.card-text Color del patito
+                        p.card-text #[span.badge.px-auto(style="width:5rem;background-color: #"+pato[0].idColors+";color:#"+pato[0].idColors+"")= " "]
+                            =" "+pato[0].colorName
+                        h6.card-text Sombrero
+                        p.card-text= hat[1].idHat
+                        h6.card-text Color del sombrero
+                        p.card-text #[span.badge.px-auto(style="width:5rem;background-color: #"+hat[0].idColors+";color:#"+hat[0].idColors+"")= " "]
+                            =" "+hat[0].colorName
+                        h6.card-text Tipo de sombrero
+                        p.card-text= hat[2].HatTName
+                        hr
+                        a.btn.btn-secondary.mx-3(href="/home") Volver
